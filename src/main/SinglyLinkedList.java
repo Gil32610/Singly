@@ -12,7 +12,7 @@ public class SinglyLinkedList {
     }
 
     public void addFirst(Integer value) {
-        SinglyListNode node = new SinglyListNode(value);
+        SinglyListNode node = new SinglyListNode(value, null);
         if (isEmpty()) {
             this.head = node;
         } else {
@@ -30,22 +30,22 @@ public class SinglyLinkedList {
         } else {
             search = this.head;
             while (search != null) {
-                if (search.getValue().compareTo(value) == 0) {
+                if (search.equals(value)) {
                     return search;
 
-                } else {
-                    search = search.getNext();
                 }
+                search = search.getNext();
+
             }
             return null;
         }
     }
 
     public int size() {
-        SinglyListNode aux = this.head;
+        SinglyListNode current = this.head;
         int size = 0;
-        while (aux != null) {
-            aux = aux.getNext();
+        while (current != null) {
+            current = current.getNext();
             size++;
         }
         return size;
@@ -53,39 +53,60 @@ public class SinglyLinkedList {
 
     public boolean isOrdered(boolean ascending) {
         if (isEmpty()) {
-            return false;
+            return true;
         } else {
             SinglyListNode node = this.head;
             if (ascending) {
-                while (node != null) {
+                while (node.getNext() != null) {
                     Integer value = node.getValue();
 
                     if (value > node.getNext().getValue()) {
                         return false;
                     }
 
-                    else {
-                        node = node.getNext();
-                    }
-                }
-                if (node == null) {
-                    return true;
+                    node = node.getNext();
+
                 }
 
+                return true;
+
             } else {
-                while (node != null) {
+                while (node.getNext() != null) {
                     Integer value = node.getValue();
                     if (value < node.getNext().getValue()) {
                         return false;
-                    } else {
-                        node = node.getNext();
                     }
-                    if (node == null) {
-                        return true;
-                    }
+                    node = node.getNext();
+
                 }
+
+                return true;
+
             }
         }
-        return false;
+    }
+
+    public void addLast(Integer value) {
+        SinglyListNode node = new SinglyListNode(value, null);
+        if (this.isEmpty()) {
+            this.head = node;
+        } else {
+            SinglyListNode pointer = this.head;
+            while (pointer.getNext() != null) {
+                pointer = pointer.getNext();
+            }
+            pointer.setNext(node);
+        }
+    }
+
+    public void reverse(){
+        if(isEmpty()){
+            this.head = null;
+        }
+        else{
+           while(this.head.getNext()!= null){
+            
+           }
+        }
     }
 }

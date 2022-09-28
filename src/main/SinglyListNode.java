@@ -4,8 +4,9 @@ public class SinglyListNode {
     private SinglyListNode next;
     private Integer value;
 
-    public SinglyListNode(Integer value) {
+    public SinglyListNode(Integer value, SinglyListNode next) {
         this.value = value;
+        this.next = next;
     }
 
     public SinglyListNode getNext() {
@@ -24,4 +25,11 @@ public class SinglyListNode {
         this.value = value;
     }
 
+    @Override
+    public boolean equals(Object object) {
+        if (object instanceof SinglyListNode) {
+            return this.getValue().equals(object);
+        }
+        return false;
+    }
 }
