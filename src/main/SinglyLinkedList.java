@@ -103,6 +103,9 @@ public class SinglyLinkedList {
         if(isEmpty()){
             this.head = null;
         }
+        else if(this.head.getNext() == null){
+            this.head = this.head;
+        }
         else{
            while(this.head.getNext()!= null){
             
