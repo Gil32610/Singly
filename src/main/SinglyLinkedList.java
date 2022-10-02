@@ -99,17 +99,38 @@ public class SinglyLinkedList {
         }
     }
 
-    public void reverse(){
-        if(isEmpty()){
-            this.head = null;
+    public void reverse() {
+        if (isEmpty() || this.size() == 1) {
+            return;
         }
-        else if(this.head.getNext() == null){
-            this.head = this.head;
+        SinglyListNode previousNode = this.head;
+        SinglyListNode curreNode = previousNode.getNext();
+        this.head.setNext(null);
+        while (curreNode!= null) {
+            this.head = curreNode.getNext();
+            curreNode.setNext(previousNode);
+            previousNode = curreNode;
+            curreNode = this.head;
+
         }
-        else{
-           while(this.head.getNext()!= null){
-            
-           }
+        this.head = previousNode;
+
+    }
+
+    public void delete(SinglyListNode nodeDel) {
+        if (this.isEmpty()) {
+            return;
+        }
+        if (nodeDel == this.head) {
+            this.head = nodeDel.getNext();
+        }
+        SinglyListNode previousNode = this.head;
+        while (previousNode != null) {
+            if (previousNode.getNext() == nodeDel) {
+                previousNode.setNext(nodeDel.getNext());
+                break;
+            }
+            previousNode = previousNode.getNext();
         }
     }
 }
