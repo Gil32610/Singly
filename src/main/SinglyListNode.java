@@ -10,7 +10,7 @@ public class SinglyListNode {
     }
 
     public SinglyListNode getNext() {
-        return next;
+        return this.next;
     }
 
     public void setNext(SinglyListNode next) {
@@ -18,7 +18,7 @@ public class SinglyListNode {
     }
 
     public Integer getValue() {
-        return value;
+        return this.value;
     }
 
     public void setValue(Integer value) {
@@ -27,8 +27,10 @@ public class SinglyListNode {
 
     @Override
     public boolean equals(Object object) {
+
         if (object instanceof SinglyListNode) {
-            return this.getValue().equals(object);
+            SinglyListNode aNode = (SinglyListNode) object;
+            return this.getValue().equals(aNode.getValue());
         }
         return false;
     }

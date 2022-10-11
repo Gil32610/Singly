@@ -106,7 +106,7 @@ public class SinglyLinkedList {
         SinglyListNode previousNode = this.head;
         SinglyListNode curreNode = previousNode.getNext();
         this.head.setNext(null);
-        while (curreNode!= null) {
+        while (curreNode != null) {
             this.head = curreNode.getNext();
             curreNode.setNext(previousNode);
             previousNode = curreNode;
@@ -132,5 +132,9 @@ public class SinglyLinkedList {
             }
             previousNode = previousNode.getNext();
         }
+    }
+
+    public SinglyListNode getHead() {
+        return this.head;
     }
 }
